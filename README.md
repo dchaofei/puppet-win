@@ -3,7 +3,7 @@
 ## Getting started
 - STEP 1: Install wechat client in your Windows computer.
 - STEP 2: Use [wechatAPI](https://github.com/WeChatAPIs/wechatAPI) inject dll 
-- STEP 3: Modify the WinApiServer, WebsocketHost, and WebsocketPort configurations in the example code
+- STEP 3: Modify the `WinApiServer`, `WebsocketHost`, and `WebsocketPort` configurations in the example code
 - STEP 4: `go run main.go`
 ```
 package main
