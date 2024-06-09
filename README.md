@@ -1,6 +1,6 @@
 # Go Wechaty Puppet Win
 
-## GETTING STARTED
+## Getting started
 - STEP 1: Install wechat client in your Windows computer.
 - STEP 2: Inject dll
 - STEP 3: Run example code
@@ -81,8 +81,8 @@ func onScan(ctx *wechaty.Context, qrCode string, status schemas.ScanStatus, data
 ```
 
 ## TODO
-- [x] room
-- [x] contact
+- [x] room sync
+- [x] contact sync
 - [x] receive text msg
 - [ ] receive and parse app msg
 - [x] send text msg
@@ -91,6 +91,6 @@ func onScan(ctx *wechaty.Context, qrCode string, status schemas.ScanStatus, data
 - [ ] Implement all TODO, search `TODO implement me` in puppet_win.go
 
 
-## reference
+## Reference
 - [puppet-engine](https://github.com/wechaty/puppet-engine)
 - [puppet-padlocal](https://github.com/wechaty/puppet-padlocal)
