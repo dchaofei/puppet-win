@@ -16,7 +16,7 @@ import (
 
 func main() {
 	puppetWin, err := puppet_win.NewPuppetWin(puppet_win.Options{
-		WinApiServer:  "http://126.xxx.xx.xxx:8888/api/", // windows机器人注入dll启动的服务
+		WinApiServer:  "http://126.xxx.xx.xxx:8888/api/", // windows机器注入dll启动的服务
 		WebsocketHost: "127.0.0.1",                       // 本程序启动会启动websocket用于接收消息消息回调，确保本地址能被windows机器访问
 		WebsocketPort: "25465",                           // 本程序启动会启动websocket用于接收消息消息回调，确保本端口能被windows机器访问
 	})
