@@ -1,10 +1,9 @@
 # Go Wechaty Puppet Win
 
 ## Getting started
-- STEP 1: Install wechat client in your Windows computer.
-- STEP 2: Use [wechatAPI](https://github.com/WeChatAPIs/wechatAPI) inject dll 
-- STEP 3: Modify the `WinApiServer`, `WebsocketHost`, and `WebsocketPort` configurations in the example code
-- STEP 4: `go run main.go`
+- STEP 1: Follow the [tutorial](https://github.com/WeChatAPIs/wechatAPI) to start wechat
+- STEP 2: Modify the `WinApiServer`, `WebsocketHost`, and `WebsocketPort` configurations in the example code
+- STEP 3: `go run main.go`
 ```
 package main
 
@@ -24,9 +23,9 @@ import (
 
 func main() {
 	puppetWin, err := puppet_win.NewPuppetWin(puppet_win.Options{
-		WinApiServer:  "http://126.xxx.xx.xxx:8888/api/", // windows机器注入dll启动的服务
-		WebsocketHost: "127.0.0.1",                       // 本程序启动会启动websocket用于接收消息消息回调，确保本地址能被windows机器访问
-		WebsocketPort: "25465",                           // 本程序启动会启动websocket用于接收消息消息回调，确保本端口能被windows机器访问
+		WinApiServer:  "http://126.xxx.xx.xxx:8888/api/", // windows 机器注入 dll 启动的服务
+		WebsocketHost: "127.0.0.1",                       // 本程序会启动 websocket 服务用于接收消息消息回调，确保本地址能被 windows 机器访问
+		WebsocketPort: "25465",                           // 本程序会启动 websocket 服务用于接收消息消息回调，确保本端口能被 windows 机器访问
 	})
 	if err != nil {
 		panic(err)
