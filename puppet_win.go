@@ -78,6 +78,8 @@ func (p *PuppetWin) Start() (err error) {
 		}
 	}()
 
+	go p.ready()
+
 	return nil
 }
 
@@ -100,8 +102,6 @@ func (p *PuppetWin) login(robot *winapi.Robot) {
 	go p.Emit(schemas.PuppetEventNameLogin, &schemas.EventLoginPayload{
 		ContactId: robot.UserName,
 	})
-
-	go p.ready()
 }
 
 func (p *PuppetWin) MessageImage(messageID string, imageType schemas.ImageType) (*filebox.FileBox, error) {
