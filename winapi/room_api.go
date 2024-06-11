@@ -14,7 +14,10 @@ func (w *WinApi) GetSavedRoomUsers() ([]*User, error) {
 	userNameBatch := w.splitBatch(userNames, 100)
 	batchCount := len(userNameBatch)
 	for i, userNames := range userNameBatch {
-		log.Tracef("GetSavedRoomUsers %d/%d", i+1, batchCount)
+		log.Tracef("GetSavedRoomUsers %d/%d userNameLen:%d", i+1, batchCount, len(userNames))
+		if len(userNames) == 0 {
+			continue
+		}
 		resp, err := w.BatchGetUser(userNames)
 		if err != nil {
 			return nil, err

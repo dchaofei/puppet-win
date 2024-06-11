@@ -40,6 +40,7 @@ func (p *PuppetWin) handleLoginEvent(msg *winapi.EventMsg, data *winapi.LoginEve
 		return
 	}
 	p.login(msg.Robot)
+	go p.ready()
 }
 
 func (p *PuppetWin) handleScanEvent(msg *winapi.EventMsg, data *winapi.LoginEventData) {

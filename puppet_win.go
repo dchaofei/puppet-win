@@ -71,14 +71,17 @@ func (p *PuppetWin) Start() (err error) {
 		return err
 	}
 
+	if p.SelfID() != "" {
+		// 必须在 msg handler 后 ready， 否则 msgHAndler 会超时
+		go p.ready()
+	}
+
 	go func() {
 		err := p.webSocketServer.start()
 		if err != nil {
 			log.Errorf("p.webSocketServer.start() %s", err.Error())
 		}
 	}()
-
-	go p.ready()
 
 	return nil
 }
