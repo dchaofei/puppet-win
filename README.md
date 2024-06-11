@@ -89,6 +89,7 @@ func onScan(ctx *wechaty.Context, qrCode string, status schemas.ScanStatus, data
 - [x] send url msg
 - [ ] send app msg
 - [ ] Implement all TODO, search `TODO implement me` in puppet_win.go
+- [ ] fix: "emit message message.Ready() err: contact not found"
 
 
 ## Reference

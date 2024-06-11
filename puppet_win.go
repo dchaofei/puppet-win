@@ -1,7 +1,6 @@
 package puppet_win
 
 import (
-	"errors"
 	"fmt"
 	"github.com/dchaofei/puppet-win/schemamapping"
 	"github.com/dchaofei/puppet-win/utils"
@@ -72,7 +71,7 @@ func (p *PuppetWin) Start() (err error) {
 	}
 
 	if p.SelfID() != "" {
-		// 必须在 msg handler 后 ready， 否则 msgHAndler 会超时
+		// 必须在 AddMsgHandler 后 ready， 否则 AddMsgHandler 可能会超时
 		go p.ready()
 	}
 
@@ -162,7 +161,7 @@ func (p *PuppetWin) ContactRawPayload(contactID string) (*schemas.ContactPayload
 		return nil, err
 	}
 	if contact == nil {
-		return nil, errors.New("contact not found")
+		return nil, fmt.Errorf("contact(%s) not found", contactID)
 	}
 	return user2Contact(contact), nil
 }
