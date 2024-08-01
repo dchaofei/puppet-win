@@ -579,3 +579,37 @@ func (p *PuppetWin) _memberMap2List(members map[string]*winapi.User) []*winapi.U
 	}
 	return users
 }
+
+// MessageForward ...
+func (p *PuppetWin) MessageForward(conversationID string, messageID string) (string, error) {
+	payload, err := p.MessagePayload(messageID)
+	if err != nil {
+		return "", err
+	}
+	var newMsgID string
+	switch payload.Type {
+	case schemas.MessageTypeText:
+		newMsgID, err = p.MessageSendText(conversationID, payload.Text)
+	case schemas.MessageTypeAttachment,
+		schemas.MessageTypeVideo,
+		schemas.MessageTypeAudio,
+		schemas.MessageTypeImage:
+		fallthrough
+		//newMsgID, err = p.messageForwardFile(conversationID, messageID)
+	case schemas.MessageTypeMiniProgram:
+		fallthrough
+		//newMsgID, err = p.messageForwardMiniProgram(conversationID, messageID)
+	case schemas.MessageTypeURL:
+		fallthrough
+		//newMsgID, err = p.messageForwardURL(conversationID, messageID)
+	case schemas.MessageTypeContact:
+		fallthrough
+		//newMsgID, err = p.messageForwardContact(conversationID, messageID)
+	default:
+		return "", fmt.Errorf("unsupported forward message type: %s", payload.Type)
+	}
+	if err != nil {
+		return "", err
+	}
+	return newMsgID, nil
+}
